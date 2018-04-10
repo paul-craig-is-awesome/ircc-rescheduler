@@ -10,6 +10,57 @@ import Footer from './Footer'
 import Button from './forms/Button'
 
 injectGlobal`
+
+@font-face {
+  font-family: "HKGroteskLight";
+  src: url('./public/HKGrotesk-Light.woff');
+}
+
+@font-face {
+  font-family: "HKGroteskLightItalic";
+  src: url('./public/HKGrotesk-LightItalic.woff');
+}
+
+@font-face {
+  font-family: "HKGroteskBold";
+  src: url('./public/HKGrotesk-Bold.woff');
+}
+
+@font-face {
+  font-family: "HKGroteskBoldItalic";
+  src: url('./public/HKGrotesk-BoldItalic.woff');
+}
+
+@font-face {
+  font-family: "HKGroteskMedium";
+  src: url('./public/HKGrotesk-Medium.woff');
+}
+
+@font-face {
+  font-family: "HKGroteskMediumItalic";
+  src: url('./public/HKGrotesk-MediumItalic.woff');
+}
+
+@font-face {
+  font-family: "HKGroteskSemiBold";
+  src: url('./public/HKGrotesk-SemiBold.woff');
+}
+
+@font-face {
+  font-family: "HKGroteskSemiBoldItalic";
+  src: url('./public/HKGrotesk-SemiBoldItalic.woff');
+}
+
+@font-face {
+  font-family: "HKGroteskRegular";
+  src: url('./public/HKGrotesk-Regular.woff');
+}
+
+@font-face {
+  font-family: "HKGroteskItalic";
+  src: url('./public/HKGrotesk-Italic.woff');
+}
+
 html, body {
     padding: 0;
 		margin: 0;

@@ -1,6 +1,6 @@
 import styled, { css } from 'react-emotion'
-
-/*This function is usually for hover events and such 
+import './fonts.css'
+/*This function is usually for hover events and such
   col: is the color in hex
   amt: is how much you want to darken or lighten, 20 is a good start.
 */
@@ -30,9 +30,9 @@ export const incrementColor = (col, amt) => {
   return (usePound ? '#' : '') + (g | (b << 8) | (r << 16)).toString(16)
 }
 
-export const fontFace = css`
-  @import url(https://fontlibrary.org/face/hk-grotesk);
-`
+//export const fontFace = css`
+//@import url(https://fontlibrary.org/face/hk-grotesk);
+//`
 
 const borderRadius = 2
 export const roundedEdges = css`
