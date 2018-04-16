@@ -1,5 +1,26 @@
 import React from 'react'
 import { AfterRoot, AfterData } from '@jaredpalmer/after'
+import { css } from 'react-emotion'
+import { theme, mediaQuery } from './styles'
+
+const htmlStyles = css`
+  padding: 0;
+  margin: 0;
+  background: ${theme.colour.red};
+  height: 100%;
+  font-family: ${theme.weight.l};
+  font-size: ${theme.font.md};
+
+  ${mediaQuery.small(css`
+    font-size: ${theme.font.xs};
+  `)};
+`
+
+const globalStyles = css`
+  body {
+    ${htmlStyles};
+  }
+`
 
 class Document extends React.Component {
   static async getInitialProps({ assets, data, renderPage }) {
@@ -15,7 +36,7 @@ class Document extends React.Component {
     const bodyAttrs = helmet.bodyAttributes.toComponent()
 
     return (
-      <html {...htmlAttrs}>
+      <html className={globalStyles} {...htmlAttrs}>
         <head>
           <meta httpEquiv="X-UA-Compatible" content="IE=edge" />
           <meta charSet="utf-8" />

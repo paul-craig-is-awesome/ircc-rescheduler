@@ -1,31 +1,14 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { css } from 'react-emotion'
 import { Trans } from 'lingui-react'
-import { theme, mediaQuery, H1, Content } from './styles'
+import { H1, Content } from './styles'
 import PageHeader from './PageHeader'
 import AlphaBanner from './AlphaBanner'
 import FederalBanner from './FederalBanner'
 import Footer from './Footer'
 
-const globalStyles = css`
-  html,
-  body {
-    padding: 0;
-    margin: 0;
-    background: ${theme.colour.white};
-    height: 100%;
-    font-family: ${theme.weight.l};
-    font-size: ${theme.font.md};
-
-    ${mediaQuery.small(css`
-      font-size: ${theme.font.xs};
-    `)};
-  }
-`
-
 const Layout = ({ children, contentClass = '' }) => (
-  <div className={globalStyles}>
+  <div>
     <AlphaBanner>
       <span>
         <Trans>This is a new service we are constantly improving.</Trans>
