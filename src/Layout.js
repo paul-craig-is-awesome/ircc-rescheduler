@@ -1,6 +1,5 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { injectGlobal } from 'emotion'
 import { css } from 'react-emotion'
 import { Trans } from 'lingui-react'
 import { theme, mediaQuery, H1, Content } from './styles'
@@ -9,8 +8,9 @@ import AlphaBanner from './AlphaBanner'
 import FederalBanner from './FederalBanner'
 import Footer from './Footer'
 
-injectGlobal`
-  html, body {
+const globalStyles = css`
+  html,
+  body {
     padding: 0;
     margin: 0;
     background: ${theme.colour.white};
@@ -25,7 +25,7 @@ injectGlobal`
 `
 
 const Layout = ({ children, contentClass = '' }) => (
-  <div>
+  <div className={globalStyles}>
     <AlphaBanner>
       <span>
         <Trans>This is a new service we are constantly improving.</Trans>
