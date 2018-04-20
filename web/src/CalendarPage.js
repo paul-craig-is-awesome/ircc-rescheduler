@@ -5,7 +5,8 @@ import styled, { css } from 'react-emotion'
 import { theme, mediaQuery, CalHeader, CalReminder, Bold } from './styles'
 import Layout from './Layout'
 import Button from './forms/Button'
-import Calendar from './Calendar'
+import { Calendar } from './Calendar'
+import { Form, Field } from 'react-final-form'
 
 const TopContainer = styled.div`
   margin-bottom: ${theme.spacing.lg};
@@ -37,6 +38,13 @@ const BottomContainer = styled.div`
   `)};
 `
 
+const sleep = ms => new Promise(resolve => setTimeout(resolve, ms))
+
+const onSubmit = async values => {
+  await sleep(300)
+  window.alert(JSON.stringify(values, 0, 2))
+}
+
 class CalendarPage extends Component {
   render() {
     return (
@@ -56,7 +64,32 @@ class CalendarPage extends Component {
             <Bold>at least four days you’re available</Bold> in June and July.
           </Trans>
         </CalHeader>
-        <Calendar />
+        <Form
+          onSubmit={onSubmit}
+          render={({ handleSubmit, reset, submitting, pristine, values }) => (
+            <form onSubmit={handleSubmit}>
+              <div>
+                <label>First Name</label>
+                <Field
+                  name="firstName"
+                  component="textarea"
+                  type="textarea"
+                  placeholder="First Name"
+                />
+              </div>
+              <div>
+                <Field name="calendar" component={Calendar} />
+              </div>
+              <div className="buttons">
+                <button type="submit" disabled={submitting || pristine}>
+                  Submit
+                </button>
+              </div>
+              <pre>{JSON.stringify(values, 0, 2)}</pre>
+            </form>
+          )}
+        />
+
         <CalReminder>
           <Trans>
             Remember: make sure to stay available on all of the days you select

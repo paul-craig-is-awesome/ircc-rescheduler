@@ -221,19 +221,17 @@ const dayPicker = css`
   }
 `
 
-export default class Calendar extends Component {
+class Calendar extends Component {
   constructor(props) {
     super(props)
     this.handleDayClick = this.handleDayClick.bind(this)
-    this.state = {
-      selectedDays: [],
-    }
   }
   handleDayClick(day, { selected, disabled }) {
     if (disabled) {
       return
     }
-    const { selectedDays } = this.state
+
+    const selectedDays = this.props.input.value || []
     if (selected) {
       const selectedIndex = selectedDays.findIndex(selectedDay =>
         DateUtils.isSameDay(selectedDay, day),
@@ -242,23 +240,34 @@ export default class Calendar extends Component {
     } else {
       selectedDays.push(day)
     }
-    this.setState({ selectedDays })
+
+    this.props.input.value = selectedDays
+    this.props.input.onChange(this.props.input.value)
   }
 
   render() {
+    let { value, onBlur, onFocus, name } = this.props.input
     return (
-      <DayPicker
-        className={css`
-          ${dayPickerDefault} ${dayPicker};
-        `}
-        month={new Date(2018, 5)}
-        fromMonth={new Date(2018, 5)}
-        toMonth={new Date(2018, 6)}
-        numberOfMonths={2}
-        disabledDays={[{ daysOfWeek: [0, 1, 3, 4, 6] }]}
-        selectedDays={this.state.selectedDays}
-        onDayClick={this.handleDayClick}
-      />
+      <div name={name}>
+        <DayPicker
+          className={css`
+            ${dayPickerDefault} ${dayPicker};
+          `}
+          month={new Date(2018, 5)}
+          fromMonth={new Date(2018, 5)}
+          toMonth={new Date(2018, 6)}
+          numberOfMonths={2}
+          disabledDays={[{ daysOfWeek: [0, 1, 3, 4, 6] }]}
+          onDayClick={this.handleDayClick}
+          selectedDays={value || null}
+          onFocus={() => onFocus()}
+          onBlur={() => onBlur()}
+        />
+        <pre>{JSON.stringify(value)}</pre>
+      </div>
     )
   }
 }
+Calendar.defaultProps = {}
+
+export { Calendar }
