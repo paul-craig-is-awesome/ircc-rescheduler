@@ -245,14 +245,6 @@ class RegistrationPage extends React.Component {
                       - form has been submitted (and is waiting)
                       - the number of values entries is less than the total number of fields
                     */}
-              <p>
-                <strong>
-                  <Trans>
-                    By submitting this request you are forfeiting your original
-                    test date.
-                  </Trans>
-                </strong>
-              </p>
               <Button
                 disabled={
                   pristine ||
